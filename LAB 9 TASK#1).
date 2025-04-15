@@ -1,0 +1,82 @@
+// Bazil-Uddin-Khan24k-0559 
+#include <iostream>
+using namespace std;
+
+class Vehicle
+{
+    protected:
+    string model;
+    double rate;
+    
+    public:
+    Vehicle():model(" "),rate(0.0)
+    {}
+    
+    Vehicle(string mode,double Rate) : model(mode),rate(Rate)
+    {}
+    
+    virtual void displayDetails() =0;
+    
+    virtual double getDailyRate() =0;
+    
+};
+
+class Car : public Vehicle
+{
+
+    public:
+    Car()
+    {}
+    
+    Car(string mode,double rate): Vehicle(mode,rate)
+    {}
+    
+    void displayDetails()
+    {
+        cout << " Car Model Is " << model << " and Car Rate is " << rate << endl;
+    }
+    
+    double getDailyRate()
+    {
+        return rate;
+    }
+    
+};
+
+class Bike : public Vehicle
+{
+
+    public:
+    Bike()    
+    {}
+    
+    Bike(string mode,double rate): Vehicle(mode,rate)
+    {}
+    
+    void displayDetails()
+    {
+        cout << " Bike Model Is " << model << " and Bike Rate is " << rate << endl;
+    }
+    
+    double getDailyRate()
+    {
+        return rate;
+    }
+    
+};
+
+
+int main()
+{
+    Vehicle * vehicle[2] = {
+        new Car("Toyota",4.6), new Bike("Zxcdf",5.8)
+    };
+    
+
+    vehicle[0]->displayDetails();
+    vehicle[1]->displayDetails();
+    cout << " Car Rate Is " << vehicle[0]->getDailyRate() << endl;
+    cout << " Bike Rate Is " << vehicle[1]->getDailyRate() << endl;
+   
+    return 0;
+}
