@@ -1,0 +1,154 @@
+// Bazil-Uddin-Khan24k-0559 
+#include <iostream>
+using namespace std;
+
+class SmartDevice
+{
+    
+    public:
+    SmartDevice()
+    {}
+    
+    
+    virtual void turnOn() =0;
+    
+    virtual void turnOff() =0;
+    
+    virtual bool getStatus() =0;
+    
+};
+
+class LightBulb : public SmartDevice
+{
+    protected:
+    bool isOn;
+    int brightness;
+    
+    public:
+    LightBulb()
+    {}
+    
+    LightBulb(int bright): brightness(bright),isOn(0)
+    {}
+    
+    void turnOn()
+    {
+        isOn = 1;
+    }
+    
+    void turnOff()
+    {
+        isOn = 0;
+    }
+    
+    bool getStatus()
+    {
+        return isOn;
+    }
+    
+    int GetBrightness()
+    {
+        return brightness;
+    }
+    
+    string GetOnoff()
+    {
+        if(isOn == 1)
+        {
+            return "on";
+        }
+        else
+        {
+            return "off";
+        }
+    }
+
+};
+
+class Thermostat : public SmartDevice
+{
+    protected:
+    bool isOn;
+    double temperature;
+    
+    public:
+    Thermostat()
+    {}
+    
+    Thermostat(double temp): temperature(temp),isOn(0)
+    {}
+    
+    void turnOn()
+    {
+        isOn = 1;
+    }
+    
+    void turnOff()
+    {
+        isOn = 0;
+    }
+    
+    bool getStatus()
+    {
+        return isOn;
+    }
+    
+    double GetTemp()
+    {
+        return temperature;
+    }
+    
+    string GetOnoff()
+    {
+        if(isOn == 1)
+        {
+            return "on";
+        }
+        else
+        {
+            return "off";
+        }
+        
+    }
+  
+};
+
+int main()
+{
+  LightBulb bulb(27);
+  Thermostat thermo(56.89);
+  
+  cout << "---Bulb Details---"<< endl;
+  
+  
+  cout << " Bulb Updated Status Is " << bulb.getStatus() <<" and Bulb is " << bulb.GetOnoff() << endl;
+  
+  bulb.turnOn();
+  
+  cout << " Bulb Updated Status Is " << bulb.getStatus() <<" and Bulb is " << bulb.GetOnoff() << endl;
+  
+  bulb.turnOff();
+  
+  cout << " Bulb Updated Status Is " << bulb.getStatus() <<" and Bulb is " << bulb.GetOnoff() << endl;
+  
+  cout << " Bulb Brightness is "<< bulb.GetBrightness() << endl;
+  
+  cout << "---Thermostat Details---"<< endl;
+  
+  
+  cout << " Thermo  Status Is " << bulb.getStatus() <<" and Thermo is " << bulb.GetOnoff() << endl;
+  
+  
+  thermo.turnOn();
+  
+  
+  cout << " Thermostat Updated Status Is " << thermo.getStatus() <<" and Thermostat is " << thermo.GetOnoff() << endl;
+  
+  thermo.turnOff();
+ 
+  cout << " Thermostat Updated Status Is " << thermo.getStatus() <<" and Thermostat is " << thermo.GetOnoff() << endl;
+  
+  cout << " Thermostat has " << thermo.GetTemp() << " Temperature " << endl;
+ 
+    return 0;
+}
