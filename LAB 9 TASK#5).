@@ -1,0 +1,67 @@
+// Bazil-Uddin-Khan24k-0559 
+#include <iostream>
+using namespace std;
+
+class Activity
+{
+    public:
+    Activity()
+    {}
+    
+ virtual void calculateCaloriesBurned() =0;
+};
+
+class Running : public Activity
+{
+    protected:
+    double distance;
+    double time;
+    
+    public:
+    Running()
+    {}
+    
+    Running(double dis, double Time): distance(dis),time(Time)
+    {}
+    
+    void calculateCaloriesBurned() 
+    {
+        double calburned = (distance/time);
+        cout << "Total Calories Burned 🔥 Is " << calburned << endl;
+    }
+};
+
+class Cycling : public Activity
+{
+    protected:
+    double speed;
+    double time;
+    
+    public:
+    Cycling()    
+    {}
+    
+    Cycling(double Speed,double Time): speed(Speed),time(Time)
+    {}
+
+    void calculateCaloriesBurned() 
+    {
+        double calburned = (speed/time);
+        cout << "Total Calories Burned 🔥 Is " << calburned << endl;
+    }
+};
+
+
+int main()
+{
+    Running run(876,2.65);
+    Cycling cycle(6.78,2.3);
+    
+    cout << " _Running_ 🏃‍ " << endl;
+    run.calculateCaloriesBurned();
+    
+    cout << " _Cycling_ ‍ " << endl;
+    cycle.calculateCaloriesBurned();
+    
+    return 0;
+}
