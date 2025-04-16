@@ -1,0 +1,86 @@
+// Bazil-Uddin-Khan24k-0559 
+#include <iostream>
+using namespace std;
+
+class PaymentMethod
+{
+
+    public:
+    PaymentMethod()
+    {}
+    
+    virtual void processPayment(double amount) =0;
+    
+};
+
+class CreditCard  : public PaymentMethod
+{
+    protected:
+    string cardNumber;
+    
+    public:
+    CreditCard()
+    {}
+    
+    CreditCard(string number): cardNumber(number)
+    {}
+    
+    void processPayment(double payment)
+    {
+        if(payment > 0)
+        {
+            cout << "Succesfully Processing Payment! "
+                << payment << endl;
+        }
+        else
+        {
+            cout << " Sorry!. Cant Proceed Payment " << endl;
+        }
+        
+    }
+    
+    
+};
+
+class DigitalWallet : public PaymentMethod
+{
+    protected:
+    double balance;
+    
+    public:
+    DigitalWallet()    
+    {}
+    
+    DigitalWallet(double bal):balance(bal)
+    {}
+
+    void processPayment(double price)
+    {
+        if(price <= balance)
+        {
+            balance = balance - price;
+            cout << " Susssfully!. Updated The Balance " << balance << endl;
+        }
+        else
+        {
+            cout << " Too less Money " << endl;
+        }
+    }
+
+    
+};
+
+
+int main()
+{
+    CreditCard credit("12345567");
+    DigitalWallet wallet(867.87);
+    
+    cout << " --Credit Processing-- " << endl;
+    credit.processPayment(700);
+    
+    cout << " --DigitalWallet Processing -- " << endl;
+    wallet.processPayment(80);
+    
+    return 0;
+}
